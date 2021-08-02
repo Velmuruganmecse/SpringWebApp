@@ -29,29 +29,30 @@ public class BootStrapData implements CommandLineRunner {
 
         Author eric=new Author("Eric","Evans");
         Book ddd=new Book("Domain Driven Design","1234567890");
+        Publisher TMH=new Publisher("Tata Magraw Hills","Saidapet","Chennai","TamilNadu","6000001");
         eric.getBooks().add(ddd);
         ddd.getAuthors().add(eric);
+        ddd.setPublisher(TMH);
+        TMH.getBooks().add(ddd);
 
         authorRepository.save(eric);
         bookRepository.save(ddd);
+        publisherRepository.save(TMH);
 
         Author vel=new Author("Vel","Murugan");
         Book dedup=new Book("Data Dedup","12345");
 
         vel.getBooks().add(dedup);
         dedup.getAuthors().add(vel);
+        TMH.getBooks().add(dedup);
 
         authorRepository.save(vel);
         bookRepository.save(dedup);
+        publisherRepository.save(TMH);
 
         System.out.println("Started in boot Strapping");
         System.out.println("Number of books"+bookRepository.count());
 
-
-        Publisher TMH=new Publisher("Tata Magraw Hills","Saidapet","Chennai","TamilNadu","6000001");
-
-
-        publisherRepository.save(TMH);
         System.out.println("Publisher added : " +TMH.toString());
         System.out.println("No of Publisher:"+publisherRepository.count());
 
