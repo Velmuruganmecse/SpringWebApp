@@ -30,6 +30,8 @@ public class Publisher {
         this.zip = zip;
     }
 
+
+
     public String getName() {
         return name;
     }
