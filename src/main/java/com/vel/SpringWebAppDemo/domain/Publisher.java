@@ -15,8 +15,9 @@ public class Publisher {
     private String city;
     private String state;
     private String zip;
-@OneToMany
-@JoinColumn(name="publisher_id")
+    @OneToMany
+    @JoinTable(name="publisher_book", joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "publisher_id"))
     private Set<Book> books = new HashSet<>();
 
     public Publisher() {
